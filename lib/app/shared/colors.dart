@@ -29,5 +29,9 @@ class CustomColors {
   /// add to cart or add some item
   static const Color mainGreen = Color(0xFF00FF43);
 
+  /// Just a white color to use in some instances
+  /// that want to use white color
+  static const Color mainWhite = Color(0xFFFFFFFF);
+
 
 }
