@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:nu_buy/app/modules/home/widgets/balance_card.dart';
 import 'package:nu_buy/app/modules/home/widgets/custom_card.dart';
 import 'package:nu_buy/app/shared/colors.dart';
 
@@ -14,12 +16,31 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: CustomColors.mainBackground,
       body: Column(
         children: <Widget>[
-          CustomCard(
-            cardText: Text(
-              "Test",
-              style: TextStyle(color: CustomColors.mainWhite),
+          BalanceCard(),
+          Container(
+            height: 120,
+            margin: EdgeInsets.only(bottom: 20),
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                CustomCard(
+                  cardText: "Ofertas",
+                  cardIcon: Icons.shopping_cart,
+                ),
+                CustomCard(
+                  cardText: "Carrinho",
+                  cardIcon: Icons.shopping_basket,
+                ),
+                CustomCard(
+                  cardText: "Histórico",
+                  cardIcon: Icons.receipt,
+                ),
+                CustomCard(
+                  cardText: "Ajuda",
+                  cardIcon: Icons.help,
+                ),
+              ],
             ),
-            cardIcon: Icon(Icons.shopping_cart, size: 25, color: CustomColors.mainWhite),
           )
         ],
       ),
