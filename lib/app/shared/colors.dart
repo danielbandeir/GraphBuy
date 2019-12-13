@@ -33,5 +33,10 @@ class CustomColors {
   /// that want to use white color
   static const Color mainWhite = Color(0xFFFFFFFF);
 
+  /// Just a black color to use in some instances
+  /// that want to use black color
+  static const Color mainBlack = Color(0xFF000000);
 
+  /// A color to use in box shadow for some widgets
+  static const Color mainShadow = Color(0XFF00000029);
 }
