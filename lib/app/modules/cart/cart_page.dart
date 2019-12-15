@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nubuy/app/modules/cart/widgets/cart_app_bar.dart';
 import 'package:nubuy/app/shared/colors.dart';
 
 class CartPage extends StatefulWidget {
@@ -15,7 +16,9 @@ class _CartPageState extends State<CartPage> {
     return Scaffold(
       backgroundColor: CustomColors.mainSky,
       body: Column(
-        children: <Widget>[],
+        children: <Widget>[
+          CartAppBar()
+        ],
       ),
     );
   }
