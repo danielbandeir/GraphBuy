@@ -14,7 +14,7 @@ class OfferAppBar extends StatelessWidget {
           child: Row(
             children: <Widget>[
               IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: const Icon(Icons.arrow_back),
                 onPressed: () => Navigator.pop(context),
                 color: CustomColors.mainWhite,
               ),
@@ -27,7 +27,7 @@ class OfferAppBar extends StatelessWidget {
               ),
               Spacer(),
               IconButton(
-                icon: Icon(Icons.shopping_basket),
+                icon: const Icon(Icons.shopping_basket),
                 onPressed: () => Navigator.pushNamed(context, '/cart/main'),
                 color: CustomColors.mainWhite,
               )
