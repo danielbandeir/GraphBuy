@@ -46,7 +46,7 @@ class _BalacenTextWidgetState extends State<BalacenTextWidget> {
                   child: IconButton(
                     onPressed: () => bloc.isVisible.add(!bloc.isVisible.value),
                     color: CustomColors.mainGrey,
-                    icon: Icon(Icons.visibility_off),
+                    icon: const Icon(Icons.visibility_off),
                   ),
                 ),
               ],
