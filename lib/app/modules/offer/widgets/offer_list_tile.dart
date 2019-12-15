@@ -43,7 +43,7 @@ class OfferListTile extends StatelessWidget {
         leading: CircleAvatar(
           backgroundImage: NetworkImage(this.image != null
               ? this.image
-              : "https://icon-library.net/images/profile-icon-white/profile-icon-white-1.jpg"),
+              : "https://Icon-library.net/images/profile-Icon-white/profile-Icon-white-1.jpg"),
         ),
         subtitle: Text(
           '${this.price.toString()}',
