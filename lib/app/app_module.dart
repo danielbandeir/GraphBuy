@@ -1,7 +1,7 @@
-import 'package:nu_buy/app/app_bloc.dart';
+import 'package:nubuy/app/app_bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
-import 'package:nu_buy/app/app_widget.dart';
+import 'package:nubuy/app/app_widget.dart';
 
 class AppModule extends ModuleWidget {
   @override

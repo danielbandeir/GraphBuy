@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:nu_buy/app/modules/home/widgets/balance_card.dart';
-import 'package:nu_buy/app/modules/home/widgets/custom_card.dart';
-import 'package:nu_buy/app/shared/colors.dart';
+import 'package:nubuy/app/modules/home/widgets/balance_card.dart';
+import 'package:nubuy/app/modules/home/widgets/custom_card.dart';
+import 'package:nubuy/app/shared/colors.dart';
 
 class HomePage extends StatefulWidget {
   @override

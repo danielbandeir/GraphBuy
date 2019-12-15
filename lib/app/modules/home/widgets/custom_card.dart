@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nu_buy/app/shared/colors.dart';
+import 'package:nubuy/app/shared/colors.dart';
 
 /// This is a custom widget for card that we'll use him like navigator,
 /// this widget will try to solve all problems using assert

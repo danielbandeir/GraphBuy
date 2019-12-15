@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nu_buy/app/shared/colors.dart';
+import 'package:nubuy/app/shared/colors.dart';
 
 class BalanceCard extends StatefulWidget {
   @override
@@ -11,7 +11,7 @@ class _BalanceCardState extends State<BalanceCard> {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-          padding: EdgeInsets.fromLTRB(20, 70, 20, 30),
+          padding: EdgeInsets.fromLTRB(20, 50, 20, 30),
           child: FractionallySizedBox(
             widthFactor: 1,
             child: Container(
@@ -30,7 +30,7 @@ class _BalanceCardState extends State<BalanceCard> {
                     child: Container(
                       color: CustomColors.mainSky,
                       margin: EdgeInsets.only(top: 50),
-                      height: 10,
+                      height: 5,
                     ),
                   )
                 ],

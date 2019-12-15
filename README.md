@@ -1,4 +1,4 @@
-# nu_buy
+# nubuy
 
 A new Flutter project.
 

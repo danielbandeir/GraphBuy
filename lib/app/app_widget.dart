@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nu_buy/app/modules/home/home_module.dart';
+import 'package:nubuy/app/modules/home/home_module.dart';
 
 class AppWidget extends StatelessWidget {
   @override

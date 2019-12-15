@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_pattern/bloc_pattern_test.dart';
 
-import 'package:nu_buy/app/app_bloc.dart';
-import 'package:nu_buy/app/app_module.dart';
+import 'package:nubuy/app/app_bloc.dart';
+import 'package:nubuy/app/app_module.dart';
 
 void main() {
   initModule(AppModule());

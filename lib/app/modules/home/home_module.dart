@@ -1,7 +1,7 @@
-import 'package:nu_buy/app/modules/home/home_bloc.dart';
+import 'package:nubuy/app/modules/home/home_bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
-import 'package:nu_buy/app/modules/home/home_page.dart';
+import 'package:nubuy/app/modules/home/home_page.dart';
 
 class HomeModule extends ModuleWidget {
   @override
