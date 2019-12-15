@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:nubuy/app/modules/offer/widgets/offer_app_bar.dart';
 import 'package:nubuy/app/modules/offer/widgets/offer_dialog.dart';
 import 'package:nubuy/app/shared/colors.dart';
 import 'package:nubuy/app/shared/widgets/custom_app_bar.dart';
 import 'package:nubuy/app/shared/widgets/custom_list_tile.dart';
+
 
 class OfferBodyPage extends StatefulWidget {
   @override
@@ -18,7 +18,10 @@ class _OfferBodyPageState extends State<OfferBodyPage> {
       children: <Widget>[
         CustomAppBar(
           title: "Ofertas",
-
+          iconButtonRedirect: IconButton(
+            icon: Icon(Icons.shopping_basket, color: CustomColors.mainWhite),
+            onPressed: () => Navigator.pushNamed(context, '/cart/main'),
+          ),
         ),
         Expanded(
           child: Container(
