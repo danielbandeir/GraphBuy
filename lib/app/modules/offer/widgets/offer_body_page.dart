@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nubuy/app/modules/offer/widgets/offer_app_bar.dart';
 import 'package:nubuy/app/modules/offer/widgets/offer_dialog.dart';
-import 'package:nubuy/app/modules/offer/widgets/offer_list_tile.dart';
 import 'package:nubuy/app/shared/colors.dart';
+import 'package:nubuy/app/shared/widgets/custom_app_bar.dart';
+import 'package:nubuy/app/shared/widgets/custom_list_tile.dart';
 
 class OfferBodyPage extends StatefulWidget {
   @override
@@ -15,7 +16,10 @@ class _OfferBodyPageState extends State<OfferBodyPage> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        OfferAppBar(),
+        CustomAppBar(
+          title: "Ofertas",
+
+        ),
         Expanded(
           child: Container(
             decoration: BoxDecoration(
@@ -24,25 +28,25 @@ class _OfferBodyPageState extends State<OfferBodyPage> {
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40))),
             child: Padding(
-              padding: EdgeInsets.only(left: 20, right: 20),
+              padding: EdgeInsets.only(left: 20, right: 20, top: 5),
               child: ListView(
                 children: <Widget>[
-                  OfferListTile(
+                  CustomListTile(
                     onPressed: () => OfferDialog,
                     title: "Testando",
                     price: 500.0,
                   ),
-                  OfferListTile(
+                  CustomListTile(
                     onPressed: null,
                     title: "Testando",
                     price: 500.0,
                   ),
-                  OfferListTile(
+                  CustomListTile(
                     onPressed: null,
                     title: "Testando",
                     price: 500.0,
                   ),
-                  OfferListTile(
+                  CustomListTile(
                     onPressed: null,
                     title: "Testando",
                     price: 500.0,
