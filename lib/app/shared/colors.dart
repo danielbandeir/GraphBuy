@@ -17,10 +17,6 @@ class CustomColors {
   /// instances of the color in all application
   static const Color mainGrey = Color(0xFF7A7A7A);
 
-  /// Used for some non-main fonts, like short or long
-  /// description
-  static const Color secondaryGrey = Color(0xFF00000029);
-
   /// Used just for background in some pages like offers and
   /// cart.
   static const Color thirdaryGrey = Color(0xFFF8F8F8);
