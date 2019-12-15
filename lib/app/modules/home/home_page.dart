@@ -24,18 +24,22 @@ class _HomePageState extends State<HomePage> {
               scrollDirection: Axis.horizontal,
               children: <Widget>[
                 CustomCard(
+                  onPressed: () => Navigator.pushNamed(context, '/offers/main'),
                   cardText: "Ofertas",
                   cardIcon: Icons.shopping_cart,
                 ),
                 CustomCard(
+                  onPressed: null,
                   cardText: "Carrinho",
                   cardIcon: Icons.shopping_basket,
                 ),
                 CustomCard(
+                  onPressed: null,
                   cardText: "Histórico",
                   cardIcon: Icons.receipt,
                 ),
                 CustomCard(
+                  onPressed: null,
                   cardText: "Ajuda",
                   cardIcon: Icons.help,
                 ),
