@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nubuy/app/modules/cart/widgets/cart_app_bar.dart';
+import 'package:nubuy/app/modules/cart/widgets/cart_body.dart';
+import 'package:nubuy/app/modules/cart/widgets/cart_bottom.dart';
 import 'package:nubuy/app/shared/colors.dart';
+import 'package:nubuy/app/shared/widgets/custom_app_bar.dart';
 
 class CartPage extends StatefulWidget {
   final String title;
@@ -15,9 +17,15 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColors.mainSky,
-      body: Column(
+      body: Stack(
         children: <Widget>[
-          CartAppBar()
+          Column(
+            children: <Widget>[CustomAppBar(title: "Carrinho"), CartBody()],
+          ),
+          Align(
+            alignment: AlignmentDirectional.bottomCenter,
+            child: CartBottom(),
+          )
         ],
       ),
     );
