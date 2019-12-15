@@ -20,7 +20,13 @@ class _CartPageState extends State<CartPage> {
       body: Stack(
         children: <Widget>[
           Column(
-            children: <Widget>[CustomAppBar(title: "Carrinho"), CartBody()],
+            children: <Widget>[
+              CustomAppBar(
+                title: "Carrinho",
+                iconButtonRedirect: Spacer(),
+              ),
+              CartBody()
+            ],
           ),
           Align(
             alignment: AlignmentDirectional.bottomCenter,
