@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
                   cardIcon: Icons.shopping_cart,
                 ),
                 CustomCard(
-                  onPressed: null,
+                  onPressed: () => Navigator.pushNamed(context, '/cart/main'),
                   cardText: "Carrinho",
                   cardIcon: Icons.shopping_basket,
                 ),

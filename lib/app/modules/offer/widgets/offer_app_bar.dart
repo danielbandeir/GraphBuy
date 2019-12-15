@@ -6,7 +6,7 @@ class OfferAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 85,
+      height: 75,
       child: Padding(
         padding: EdgeInsets.only(left: 25, right: 25),
         child: Align(
@@ -28,7 +28,7 @@ class OfferAppBar extends StatelessWidget {
               Spacer(),
               IconButton(
                 icon: Icon(Icons.shopping_basket),
-                onPressed: () => print('Im here'),
+                onPressed: () => Navigator.pushNamed(context, '/cart/main'),
                 color: CustomColors.mainWhite,
               )
             ],
