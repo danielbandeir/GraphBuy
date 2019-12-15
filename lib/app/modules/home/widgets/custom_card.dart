@@ -15,9 +15,11 @@ class CustomCard extends StatelessWidget {
   final double cardIconSize;
   final Color cardIconColor;
   final double cardBorderRadius;
+  final Function onPressed;
 
   const CustomCard(
-      {this.width = 130,
+      {@required this.onPressed,
+      this.width = 130,
       this.cardColor = CustomColors.mainSky,
       this.cardIconColor = CustomColors.mainWhite,
       this.cardIconSize = 25,
@@ -32,7 +34,7 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     /// Check if height defined is less than height of context
     return FlatButton(
-      onPressed: null,
+      onPressed: this.onPressed,
       child: Container(
         width: this.width,
         decoration: BoxDecoration(
