@@ -1,9 +1,13 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:rxdart/subjects.dart';
 
 class CartBloc extends BlocBase {
-  //dispose will be called automatically by closing its streams
+  BehaviorSubject<bool> cardToggle = new BehaviorSubject<bool>();
+  
+
   @override
   void dispose() {
+    cardToggle.close();
     super.dispose();
   }
 }
