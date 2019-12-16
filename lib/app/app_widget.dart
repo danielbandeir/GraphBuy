@@ -14,7 +14,7 @@ class AppWidget extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
     ));
-    return CupertinoApp(
+    return MaterialApp(
       title: 'NuBuy',
       initialRoute: this.initialRoute,
       routes: this.routes,
