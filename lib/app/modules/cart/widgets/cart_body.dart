@@ -17,23 +17,23 @@ class _CartBodyState extends State<CartBody> {
               child: ListView(
                 children: <Widget>[
                   CustomListTile(
-                    onPressed: () => showDescription(context),
+                    onPressed: () => showDescription(context, "Teste1", 4000, "Testandsaokdasoksda"),
                     title: "Testando2",
                     paddingTop: 0,
                     price: 500.0,
                   ),
                   CustomListTile(
-                    onPressed: null,
+                    onPressed: () => showDescription(context, "Teste1", 4000, "Testandsaokdasoksda"),
                     title: "Testando",
                     price: 500.0,
                   ),
                   CustomListTile(
-                    onPressed: null,
+                    onPressed: () => showDescription(context, "Teste1", 4000, "Testandsaokdasoksda"),
                     title: "Testando",
                     price: 500.0,
                   ),
                   CustomListTile(
-                    onPressed: null,
+                    onPressed: () => showDescription(context, "Teste1", 4000, "Testandsaokdasoksda"),
                     title: "Testando",
                     price: 500.0,
                   ),
