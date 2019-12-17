@@ -1,7 +1,4 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:nubuy/app/shared/colors.dart';
 import 'package:nubuy/app/shared/widgets/custom_raised_button.dart';
 import 'package:rxdart/subjects.dart';
@@ -20,7 +17,7 @@ class CustomContentDialog extends StatefulWidget {
   final double distanceManyButton;
   final Color raisedButtonColor;
   final double distanceDescMany;
-  final int seededBloc;
+  final int numberItems;
 
   const CustomContentDialog(
       {@required this.title,
@@ -28,16 +25,24 @@ class CustomContentDialog extends StatefulWidget {
       @required this.description,
       @required this.raisedButtonText,
       @required this.onPressedRaisedButton,
-      this.raisedButtonColor = CustomColors.mainGreen,
-      this.distanceManyButton = 10,
-      this.heightContent = 400,
-      this.distanceDescMany = 20,
-      this.marginsAll = const <double>[40.0, 40.0, 30.0],
-      this.marginIconText = 20,
-      this.marginsValueText = const <double>[20, 20],
-      this.sizeDescription = 100,
-      this.seededBloc = 0})
-      : assert(heightContent >= 400);
+      raisedButtonColor,
+      distanceManyButton,
+      heightContent,
+      distanceDescMany,
+      marginsAll,
+      marginIconText,
+      marginsValueText,
+      sizeDescription,
+      numberItems})
+      : heightContent = heightContent ?? 400,
+        raisedButtonColor = raisedButtonColor ?? CustomColors.mainGreen,
+        distanceManyButton = distanceManyButton ?? 10,
+        distanceDescMany = distanceDescMany ?? 20,
+        marginsAll = marginsAll ?? const <double>[40.0, 40.0, 30.0],
+        marginIconText = marginIconText ?? 20,
+        marginsValueText = marginsValueText ?? const <double>[20, 20],
+        sizeDescription = sizeDescription ?? 100,
+        numberItems = numberItems ?? 0;
 
   @override
   _CustomContentDialogState createState() => _CustomContentDialogState();
@@ -54,7 +59,7 @@ class _CustomContentDialogState extends State<CustomContentDialog> {
 
   @override
   Widget build(BuildContext context) {
-  valueNumbers = new BehaviorSubject<int>.seeded(widget.seededBloc);
+    valueNumbers = new BehaviorSubject<int>.seeded(widget.numberItems);
 
     return Container(
       margin: EdgeInsets.only(
@@ -97,35 +102,36 @@ class _CustomContentDialogState extends State<CustomContentDialog> {
               children: <Widget>[Text(widget.description)],
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(top: widget.distanceDescMany),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                IconButton(
-                  onPressed: () => valueNumbers.add(valueNumbers.value - 1),
-                  icon: Icon(Icons.remove, size: 32),
-                ),
-                Container(
-                  height: 30,
-                  child: StreamBuilder<int>(
-                    stream: valueNumbers.stream,
-                    builder: (BuildContext context, AsyncSnapshot snapshot) {
-                      return Text(
+          StreamBuilder<int>(
+            stream: valueNumbers.stream,
+            initialData: valueNumbers.value,
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              return Padding(
+                padding: EdgeInsets.only(top: widget.distanceDescMany),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    IconButton(
+                      onPressed: snapshot.data > 0
+                          ? () => valueNumbers.add(snapshot.data - 1)
+                          : null,
+                      icon: Icon(Icons.remove, size: 32),
+                    ),
+                    Container(
+                      height: 30,
+                      child: Text(
                         snapshot.data.toString(),
-                        style: TextStyle(
-                          fontSize: 23
-                        ),
-                      );
-                    },
-                  ),
+                        style: TextStyle(fontSize: 23),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () => valueNumbers.add(snapshot.data + 1),
+                      icon: Icon(Icons.add, size: 32),
+                    )
+                  ],
                 ),
-                IconButton(
-                  onPressed: () => valueNumbers.add(valueNumbers.value + 1),
-                  icon: Icon(Icons.add, size: 32),
-                )
-              ],
-            ),
+              );
+            },
           ),
           CustomRaisedButton(
             onPressedRaisedButton: widget.onPressedRaisedButton,
