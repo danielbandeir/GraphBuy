@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nubuy/app/modules/offer/widgets/offer_dialog.dart';
 import 'package:nubuy/app/shared/colors.dart';
+import 'package:nubuy/app/shared/widgets/custom_alert_dialgog.dart';
 import 'package:nubuy/app/shared/widgets/custom_app_bar.dart';
 import 'package:nubuy/app/shared/widgets/custom_list_tile.dart';
 
@@ -35,22 +36,22 @@ class _OfferBodyPageState extends State<OfferBodyPage> {
               child: ListView(
                 children: <Widget>[
                   CustomListTile(
-                    onPressed: () => OfferDialog,
+                    onPressed: () => showDescription(context, "Teste1", 4000, "Testandsaokdasoksda"),
                     title: "Testando",
                     price: 500.0,
                   ),
                   CustomListTile(
-                    onPressed: null,
+                    onPressed: () => showDescription(context, "Teste1", 4000, "Testandsaokdasoksda"),
                     title: "Testando",
                     price: 500.0,
                   ),
                   CustomListTile(
-                    onPressed: null,
+                    onPressed: () => showDescription(context, "Teste1", 4000, "Testandsaokdasoksda"),
                     title: "Testando",
                     price: 500.0,
                   ),
                   CustomListTile(
-                    onPressed: null,
+                    onPressed: () => showDescription(context, "Teste1", 4000, "Testandsaokdasoksda"),
                     title: "Testando",
                     price: 500.0,
                   ),
