@@ -55,9 +55,9 @@ class _BalacenTextWidgetState extends State<BalacenTextWidget> {
               alignment: AlignmentDirectional.centerEnd,
               child: StreamBuilder(
                 stream: bloc.isVisible.stream,
-                initialData: false,
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
-                  return Opacity(
+                  return AnimatedOpacity(
+                    duration: Duration(milliseconds: 100),
                     opacity: !snapshot.data ? 1 : 0,
                     child: Text(
                       "RS 3000,00",
