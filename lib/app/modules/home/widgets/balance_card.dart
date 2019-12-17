@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nubuy/app/modules/home/widgets/balance_text_widget.dart';
-import 'package:nubuy/app/modules/home/widgets/custom_line_widget.dart';
+import 'package:nubuy/app/shared/widgets/custom_line_widget.dart';
 import 'package:nubuy/app/shared/colors.dart';
 
 class BalanceCard extends StatefulWidget {
@@ -9,6 +9,7 @@ class BalanceCard extends StatefulWidget {
 }
 
 class _BalanceCardState extends State<BalanceCard> {
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
