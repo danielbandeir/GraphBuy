@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:nubuy/app/modules/home/widgets/balance_card.dart';
-import 'package:nubuy/app/modules/home/widgets/custom_card.dart';
+import 'package:nubuy/app/shared/widgets/custom_card.dart';
 import 'package:nubuy/app/shared/colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -27,11 +27,6 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () => Navigator.pushNamed(context, '/offers/main'),
                   cardText: "Ofertas",
                   cardIcon: Icons.shopping_cart,
-                ),
-                CustomCard(
-                  onPressed: () => Navigator.pushNamed(context, '/cart/main'),
-                  cardText: "Carrinho",
-                  cardIcon: Icons.shopping_basket,
                 ),
                 CustomCard(
                   onPressed: null,
