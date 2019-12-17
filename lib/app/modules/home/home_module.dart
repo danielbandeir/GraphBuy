@@ -5,9 +5,8 @@ import 'package:nubuy/app/modules/home/home_page.dart';
 
 class HomeModule extends ModuleWidget {
   @override
-  List<Bloc> get blocs => [
-        Bloc((i) => HomeBloc()),
-      ];
+  List<Bloc> get blocs =>
+      [Bloc((i) => HomeBloc())];
 
   @override
   List<Dependency> get dependencies => [];
