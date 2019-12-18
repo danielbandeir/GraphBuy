@@ -24,8 +24,8 @@ class _OfferBodyPageState extends State<OfferBodyPage> {
         CustomAppBar(
           title: "Ofertas",
           iconButtonRedirect: IconButton(
-            icon: Icon(Icons.shopping_basket, color: CustomColors.mainWhite),
-            onPressed: () => Navigator.pushNamed(context, '/cart/main'),
+            icon: Icon(Icons.receipt, color: CustomColors.mainWhite),
+            onPressed: () => Navigator.pushNamed(context, '/historic/main'),
           ),
         ),
         Expanded(
@@ -57,7 +57,7 @@ class _OfferBodyPageState extends State<OfferBodyPage> {
                                   snapshot.data[index].product.image,
                                   "Comprar",
                                   () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CustomWaitPurchase(
-                                    futureAwait: offerBloc.purchaseItem(snapshot.data[index].id),
+                                    futureAwait: offerBloc.purchaseItem(snapshot.data[index].id, snapshot.data[index]),
                                     routeNameRedirect: "/home/main",
                                   )))),
                               title: snapshot.data[index].product.name,
