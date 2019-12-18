@@ -1,3 +1,5 @@
+import 'package:nubuy/app/shared/models/purchase_costumer.model.dart';
+
 class PurchaseModel {
   final bool success;
   final String errorMessage;
