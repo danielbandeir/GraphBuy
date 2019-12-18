@@ -35,4 +35,7 @@ class CustomColors {
 
   /// A color to use in box shadow for some widgets
   static const Color mainShadow = Color(0XFF00000029);
+
+  /// Color to use when need to show a error
+  static const Color mainError = Color(0XFFCC0000);
 }
