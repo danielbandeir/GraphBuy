@@ -32,7 +32,7 @@ class _OfferBodyPageState extends State<OfferBodyPage> {
           child: FutureBuilder<List<OfferModel>>(
             future: offerBloc.getOffers(),
             builder: (BuildContext context, snapshot) {
-              return !snapshot.hasData ? Center(child: CircularProgressIndicator()) : Container(
+              return !snapshot.hasData ? Center(child: CircularProgressIndicator(valueColor: const AlwaysStoppedAnimation<Color>(CustomColors.mainWhite))) : Container(
                 decoration: BoxDecoration(
                     color: CustomColors.thirdaryGrey,
                     borderRadius: BorderRadius.only(
