@@ -20,7 +20,7 @@ class _BalacenTextWidgetState extends State<BalacenTextWidget> {
         future: bloc.getUser(),
         builder: (BuildContext context, snapshotUser) {
           if(snapshotUser.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator(valueColor: const AlwaysStoppedAnimation<Color>(CustomColors.mainSky)));
           } else {
             return Padding(
               padding: EdgeInsets.only(left: 70, right: 70),
