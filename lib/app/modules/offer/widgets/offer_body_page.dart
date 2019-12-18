@@ -44,7 +44,7 @@ class _OfferBodyPageState extends State<OfferBodyPage> {
                     itemCount: snapshot.data.length,
                     itemBuilder: (BuildContext context, int index) {
                       return CustomListTile(
-                        onPressed: () => showDescription(context, snapshot.data[index].product.name, snapshot.data[index].price, snapshot.data[index].product.description, snapshot.data[index].product.image, "Comprar", () => print("teste")),
+                        onPressed: () => showDescription(context, snapshot.data[index].product.name, snapshot.data[index].price, snapshot.data[index].product.description, snapshot.data[index].product.image, "Comprar", () => offerBloc.purchaseItem(snapshot.data[index].id)),
                         title: snapshot.data[index].product.name,
                         price: snapshot.data[index].price,
                         image: snapshot.data[index].product.image,
