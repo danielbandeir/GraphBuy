@@ -102,7 +102,7 @@ class _CustomContentDialogState extends State<CustomContentDialog> {
           ),
           CustomRaisedButton(
             onPressedRaisedButton: widget.onPressedRaisedButton,
-            raisedButtonText: widget.raisedButtonText,
+            raisedText: widget.raisedButtonText,
             distanceManyButton: widget.distanceManyButton,
             raisedButtonColor: widget.raisedButtonColor,
           )
