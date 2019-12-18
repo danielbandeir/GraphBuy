@@ -4,19 +4,19 @@ import 'package:nubuy/app/modules/home/home_bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:nubuy/app/modules/home/home_page.dart';
-import 'package:nubuy/app/modules/home/home_repository.dart';
+import 'package:nubuy/app/modules/home/impl/home_repository_impl.dart';
 
 class HomeModule extends ModuleWidget {
   @override
   List<Bloc> get blocs => [
         Bloc((i) => HomeBloc(
-            homeRepository: HomeModule.to.getDependency<HomeRepository>()))
+            homeRepository: HomeModule.to.getDependency<HomeRepositoryImpl>()))
       ];
 
   @override
   List<Dependency> get dependencies => [
         Dependency((i) =>
-            HomeRepository(client: AppModule.to.getDependency<GraphQLClient>()))
+            HomeRepositoryImpl(client: AppModule.to.getDependency<GraphQLClient>()))
       ];
 
   @override
