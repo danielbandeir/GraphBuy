@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nubuy/app/shared/widgets/custom_content_dialog.dart';
 
-void showDescription(BuildContext context, String title, double value,
-    String description, String textRaised, Function onPressRaised,
+void showDescription(BuildContext context, String title, int value,
+    String description, String image, String textRaised, Function onPressRaised,
     {double heightContent,
     List<double> marginsAll,
     double marginIconText,
@@ -19,6 +19,7 @@ void showDescription(BuildContext context, String title, double value,
       return CustomContentDialog(
         title: title,
         value: value,
+        image: image,
         description: description,
         raisedButtonText: textRaised,
         onPressedRaisedButton: onPressRaised,
