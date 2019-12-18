@@ -1,3 +1,4 @@
+import 'package:nubuy/app/modules/offer/offer_repository.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:nubuy/app/app_bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
