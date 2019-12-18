@@ -8,23 +8,22 @@ class MobileOffline extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       color: CustomColors.mainWhite,
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: Container(
-          width: 200,
-          height: 100,
-          child: Column(
-            children: <Widget>[
-              RichText(
-                text: TextSpan(
-                  style: TextStyle(color: CustomColors.mainError, fontSize: 22),
-                  children: <TextSpan> [
-                    
-                  ]
-                ),
-              )
-            ],
-          ),
+      child: Container(
+        width: 200,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Icon(Icons.warning, color: CustomColors.mainError),
+            Padding(
+              padding: EdgeInsets.only(top: 20, bottom: 20),
+              child: Text("Ocorreu um problema de conexão", style: TextStyle(color: CustomColors.mainError)),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 20),
+              child: Text("Verifique sua conexão", style: TextStyle(color: CustomColors.mainError)),
+            )
+          ],
         ),
       ),
     );
