@@ -15,7 +15,7 @@ class CustomRaisedButton extends StatefulWidget {
       @required this.onPressedRaisedButton,
       this.raisedButtonColor = CustomColors.mainGreen,
       this.distanceManyButton = 10,
-      this.raisedText = "Salvar",
+      this.raisedText = "Comprar",
       this.raisedTextColor = CustomColors.mainWhite,
       this.raisedFontSize = 18
   });
