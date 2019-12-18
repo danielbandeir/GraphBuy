@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nubuy/app/app_bloc.dart';
 import 'package:nubuy/app/app_module.dart';
+import 'package:nubuy/app/modules/home/home_bloc.dart';
+import 'package:nubuy/app/modules/home/home_module.dart';
 import 'package:nubuy/app/shared/colors.dart';
 import 'package:nubuy/app/shared/models/user.model.dart';
 
@@ -11,7 +13,7 @@ class BalacenTextWidget extends StatefulWidget {
 }
 
 class _BalacenTextWidgetState extends State<BalacenTextWidget> {
-  final AppBloc bloc = AppModule.to.bloc<AppBloc>();
+  final HomeBloc bloc = HomeModule.to.bloc<HomeBloc>();
 
   @override
   Widget build(BuildContext context) {
