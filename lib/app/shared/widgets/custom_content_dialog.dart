@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:nubuy/app/shared/colors.dart';
 import 'package:nubuy/app/shared/widgets/custom_raised_button.dart';
@@ -5,8 +6,9 @@ import 'package:rxdart/subjects.dart';
 
 class CustomContentDialog extends StatefulWidget {
   final String title;
-  final double value;
+  final int value;
   final String description;
+  final String image;
   final double heightContent;
   final List<double> marginsAll;
   final double marginIconText;
@@ -22,6 +24,7 @@ class CustomContentDialog extends StatefulWidget {
   const CustomContentDialog(
       {@required this.title,
       @required this.value,
+        @required this.image,
       @required this.description,
       @required this.raisedButtonText,
       @required this.onPressedRaisedButton,
@@ -34,14 +37,14 @@ class CustomContentDialog extends StatefulWidget {
       marginsValueText,
       sizeDescription,
       numberItems})
-      : heightContent = heightContent ?? 400,
+      : heightContent = heightContent ?? 250,
         raisedButtonColor = raisedButtonColor ?? CustomColors.mainGreen,
         distanceManyButton = distanceManyButton ?? 10,
         distanceDescMany = distanceDescMany ?? 20,
         marginsAll = marginsAll ?? const <double>[40.0, 40.0, 30.0],
         marginIconText = marginIconText ?? 20,
         marginsValueText = marginsValueText ?? const <double>[20, 20],
-        sizeDescription = sizeDescription ?? 100,
+        sizeDescription = sizeDescription ?? 70,
         numberItems = numberItems ?? 0;
 
   @override
@@ -49,18 +52,9 @@ class CustomContentDialog extends StatefulWidget {
 }
 
 class _CustomContentDialogState extends State<CustomContentDialog> {
-  BehaviorSubject<int> valueNumbers;
-
-  @override
-  void dispose() {
-    valueNumbers.close();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
-    valueNumbers = new BehaviorSubject<int>.seeded(widget.numberItems);
-
     return Container(
       margin: EdgeInsets.only(
           left: widget.marginsAll[0],
@@ -76,7 +70,11 @@ class _CustomContentDialogState extends State<CustomContentDialog> {
                 child: Container(
                   height: 50,
                   width: 50,
-                  color: Colors.black,
+                  child: CachedNetworkImage(
+                    imageUrl: widget.image,
+                    fit: BoxFit.cover,
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  ),
                 ),
               ),
               Padding(
@@ -101,37 +99,6 @@ class _CustomContentDialogState extends State<CustomContentDialog> {
               scrollDirection: Axis.vertical,
               children: <Widget>[Text(widget.description)],
             ),
-          ),
-          StreamBuilder<int>(
-            stream: valueNumbers.stream,
-            initialData: valueNumbers.value,
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              return Padding(
-                padding: EdgeInsets.only(top: widget.distanceDescMany),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    IconButton(
-                      onPressed: snapshot.data > 0
-                          ? () => valueNumbers.add(snapshot.data - 1)
-                          : null,
-                      icon: Icon(Icons.remove, size: 32),
-                    ),
-                    Container(
-                      height: 30,
-                      child: Text(
-                        snapshot.data.toString(),
-                        style: TextStyle(fontSize: 23),
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () => valueNumbers.add(snapshot.data + 1),
-                      icon: Icon(Icons.add, size: 32),
-                    )
-                  ],
-                ),
-              );
-            },
           ),
           CustomRaisedButton(
             onPressedRaisedButton: widget.onPressedRaisedButton,
