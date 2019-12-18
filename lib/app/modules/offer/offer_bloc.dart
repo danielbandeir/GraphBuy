@@ -16,7 +16,7 @@ class OfferBloc extends BlocBase {
 
   Future<List<OfferModel>> getOffers() async => await offerRepository.getUserOffer();
 
-  Future<PurchaseModel> purchaseItem(String id) async => await offerRepository.purchaseOffer(id);
+  Future<PurchaseModel> purchaseItem(String id, OfferModel offer) async => await offerRepository.purchaseOffer(id, offer);
 
   //dispose will be called automatically by closing its streams
   @override
