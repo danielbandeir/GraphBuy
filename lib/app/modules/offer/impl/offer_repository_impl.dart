@@ -59,6 +59,7 @@ class OfferRepositoryImpl extends Disposable implements OfferRepository {
     );
 
     final QueryResult result = await client.mutate(options);
+    print(result.data.toString());
     PurchaseModel purchaseModel = PurchaseModel.fromJson(await result.data["purchase"]);
     return purchaseModel;
   }
