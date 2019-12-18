@@ -1,11 +1,18 @@
+import 'package:hive/hive.dart';
 import 'package:nubuy/app/shared/models/product.model.dart';
 
-class OfferModel {
+part 'offers.model.g.dart';
+
+@HiveType()
+class OfferModel extends HiveObject {
+  @HiveField(0)
   final String id;
+  @HiveField(1)
   final int price;
+  @HiveField(2)
   final ProductModel product;
 
-  const OfferModel({
+  OfferModel({
     this.id,
     this.price,
     this.product,
