@@ -15,14 +15,14 @@ class _BalacenTextWidgetState extends State<BalacenTextWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<UserModel>(
-      future: bloc.getUser(),
-      builder: (BuildContext context, snapshotUser) {
-        if(snapshotUser.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
-        } else {
-          return Expanded(
-            child: Padding(
+    return Expanded(
+      child: FutureBuilder<UserModel>(
+        future: bloc.getUser(),
+        builder: (BuildContext context, snapshotUser) {
+          if(snapshotUser.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          } else {
+            return Padding(
               padding: EdgeInsets.only(left: 70, right: 70),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -75,10 +75,10 @@ class _BalacenTextWidgetState extends State<BalacenTextWidget> {
                   )
                 ],
               ),
-            ),
-          );
-        }
-      },
+            );
+          }
+        },
+      ),
     );
   }
 }
