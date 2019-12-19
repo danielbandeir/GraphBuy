@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hive/hive.dart';
+import 'package:internationalization/internationalization.dart';
 import 'package:nubuy/app/app_module.dart';
 import 'package:nubuy/app/modules/home/home_module.dart';
 
@@ -27,6 +29,12 @@ class _AppWidgetState extends State<AppWidget> {
         child: MaterialApp(
           title: 'NuBuy',
           initialRoute: widget.initialRoute,
+          supportedLocales: suportedLocales,
+          localizationsDelegates: [
+              Internationalization.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+          ],
           routes: widget.routes,
           home: HomeModule(),
         ),

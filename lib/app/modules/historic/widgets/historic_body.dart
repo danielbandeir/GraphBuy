@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:internationalization/internationalization.dart';
 import 'package:nubuy/app/shared/colors.dart';
 import 'package:nubuy/app/shared/widgets/custom_alert_dialgog.dart';
 import 'package:nubuy/app/shared/widgets/custom_app_bar.dart';
@@ -18,7 +19,7 @@ class _HistoricBodyState extends State<HistoricBody> {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         CustomAppBar(
-          title: "Histórico",
+          title: Strings.of(context).valueOf("historic"),
           iconButtonRedirect: Spacer(),
         ),
         Expanded(
@@ -41,7 +42,7 @@ class _HistoricBodyState extends State<HistoricBody> {
                           box.getAt(index).price,
                           box.getAt(index).product.description,
                           box.getAt(index).product.image,
-                          "Comprar",
+                          Strings.of(context).valueOf("buy"),
                           () => print("test"),
                           enableButton: false),
                       title: box.getAt(index).product.name,

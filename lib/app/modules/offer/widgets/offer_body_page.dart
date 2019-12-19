@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:internationalization/internationalization.dart';
 import 'package:nubuy/app/modules/offer/offer_bloc.dart';
 import 'package:nubuy/app/modules/offer/offer_module.dart';
 import 'package:nubuy/app/shared/colors.dart';
@@ -22,7 +23,7 @@ class _OfferBodyPageState extends State<OfferBodyPage> {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         CustomAppBar(
-          title: "Ofertas",
+          title: Strings.of(context).valueOf("offer"),
           iconButtonRedirect: IconButton(
             icon: Icon(Icons.receipt, color: CustomColors.mainWhite),
             onPressed: () => Navigator.pushNamed(context, '/historic/main'),
@@ -55,7 +56,7 @@ class _OfferBodyPageState extends State<OfferBodyPage> {
                                   snapshot.data[index].price,
                                   snapshot.data[index].product.description,
                                   snapshot.data[index].product.image,
-                                  "Comprar",
+                                  Strings.of(context).valueOf("buy"),
                                   () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CustomWaitPurchase(
                                     futureAwait: offerBloc.purchaseItem(snapshot.data[index].id, snapshot.data[index]),
                                     routeNameRedirect: "/home/main",

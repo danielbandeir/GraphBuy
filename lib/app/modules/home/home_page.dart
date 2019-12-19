@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:hive/hive.dart';
+import 'package:internationalization/internationalization.dart';
 import 'package:nubuy/app/modules/home/widgets/balance_card.dart';
 import 'package:nubuy/app/shared/widgets/custom_card.dart';
 import 'package:nubuy/app/shared/colors.dart';
@@ -30,17 +31,17 @@ class _HomePageState extends State<HomePage> {
                     children: <Widget>[
                       CustomCard(
                         onPressed: () => Navigator.pushNamed(context, '/offers/main'),
-                        cardText: "Ofertas",
+                        cardText: Strings.of(context).valueOf("offer"),
                         cardIcon: Icons.shopping_cart,
                       ),
                       CustomCard(
                         onPressed: () => Navigator.pushNamed(context, '/historic/main'),
-                        cardText: "Histórico",
+                        cardText: Strings.of(context).valueOf("historic"),
                         cardIcon: Icons.receipt,
                       ),
                       CustomCard(
                         onPressed: () => Navigator.pushNamed(context, '/help/main'),
-                        cardText: "Ajuda",
+                        cardText: Strings.of(context).valueOf("help"),
                         cardIcon: Icons.help,
                       ),
                     ],

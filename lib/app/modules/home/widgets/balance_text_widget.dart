@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:internationalization/internationalization.dart';
 import 'package:nubuy/app/app_bloc.dart';
 import 'package:nubuy/app/app_module.dart';
 import 'package:nubuy/app/modules/home/home_bloc.dart';
@@ -48,7 +49,7 @@ class _BalacenTextWidgetState extends State<BalacenTextWidget> {
                     children: <Widget>[
                       Align(
                         child: Text(
-                          "Saldo",
+                          Strings.of(context).valueOf("balance"),
                           style: TextStyle(color: CustomColors.mainGrey),
                         ),
                       ),

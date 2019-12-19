@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:internationalization/internationalization.dart';
 import 'package:nubuy/app/modules/help/help_bloc.dart';
 import 'package:nubuy/app/modules/help/help_module.dart';
 import 'package:nubuy/app/shared/colors.dart';
@@ -14,7 +15,7 @@ class HelpBody extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         CustomAppBar(
-          title: "Ajuda",
+          title: Strings.of(context).valueOf("help"),
           iconButtonRedirect: Spacer(),
         ),
         Expanded(
@@ -29,7 +30,7 @@ class HelpBody extends StatelessWidget {
                   await bloc.clearHistoricAndUserData();
                   Navigator.pushNamed(context, '/home/main');
                 },
-                raisedText: "Limpar dados",
+                raisedText: Strings.of(context).valueOf("help-button"),
                 raisedButtonColor: CustomColors.mainSky,
                 raisedTextColor: CustomColors.mainWhite,
               )),
