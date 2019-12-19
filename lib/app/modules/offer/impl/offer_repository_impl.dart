@@ -15,24 +15,8 @@ class OfferRepositoryImpl extends Disposable implements OfferRepository {
 
   @override
   Future<List<OfferModel>> getUserOffer() async {
-    const String query = '''
-    {
-      viewer {
-        offers {
-          id
-          price
-          product {
-            id
-            name
-            description
-            image
-          }
-        }
-      }
-    }
-    ''';
     final QueryOptions options = QueryOptions(
-      documentNode: gql(query),
+      documentNode: gql(OfferQuery.getAllOffers),
     );
     final QueryResult result = await client.query(options);
     List<OfferModel> userOffers =
@@ -46,12 +30,11 @@ class OfferRepositoryImpl extends Disposable implements OfferRepository {
 
   @override
   Future<PurchaseModel> purchaseOffer(String id, OfferModel offer) async {
-    var boxUser = await Hive.openBox('user');
-    UserModel userModel = boxUser.get("data");
+    UserModel userModel = Hive.box('user').get("data");
 
     if (await verifyIfHaveBalance(userModel.balance, offer.price)) {
       final MutationOptions options = MutationOptions(
-        documentNode: gql(OfferQuery().tryPurchase),
+        documentNode: gql(OfferQuery.tryPurchase),
         variables: <String, dynamic>{
           'id': id,
         },
@@ -60,19 +43,28 @@ class OfferRepositoryImpl extends Disposable implements OfferRepository {
       PurchaseModel purchaseModel =
           PurchaseModel.fromJson(await result.data["purchase"]);
       if (purchaseModel.success) {
-        var boxHistoric = await Hive.openBox('historic');
-        await boxHistoric.add(offer);
-        userModel.balance = userModel.balance - offer.price;
-        await userModel.save();
-        await Hive.box('historic').close();
-        await Hive.box('user').close();
+        await updateUserBalanceAndHistoric(userModel, offer);
       }
       return purchaseModel;
     } else {
-      return PurchaseModel(success: false, errorMessage: "You don't have that much money.",customer: CustomerModel(balance: userModel.balance, id: userModel.id));
+      return PurchaseModel(
+          success: false,
+          errorMessage: "You don't have that much money.",
+          customer:
+              CustomerModel(balance: userModel.balance, id: userModel.id));
     }
   }
 
   @override
   void dispose() {}
+
+  @override
+  Future<void> updateUserBalanceAndHistoric(
+      UserModel userInfo, OfferModel offer) async {
+    var boxHistoric = await Hive.openBox('historic');
+    await boxHistoric.add(offer);
+    userInfo.balance = userInfo.balance - offer.price;
+    await userInfo.save();
+    await Hive.box('historic').close();
+  }
 }

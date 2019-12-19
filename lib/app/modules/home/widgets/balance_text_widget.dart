@@ -24,11 +24,13 @@ class _BalacenTextWidgetState extends State<BalacenTextWidget> {
         box: Hive.box('user'),
         builder: (BuildContext context, box) {
           UserModel data = box.get('data');
-          if(data  == null) {
+          if (data == null) {
             bloc.getUser();
-            return CircularProgressIndicator(
-                valueColor: const AlwaysStoppedAnimation<Color>(
-                    CustomColors.mainSky));
+            return Center(
+              child: CircularProgressIndicator(
+                  valueColor: const AlwaysStoppedAnimation<Color>(
+                      CustomColors.mainSky)),
+            );
           } else {
             return Padding(
               padding: EdgeInsets.only(left: 70, right: 70),

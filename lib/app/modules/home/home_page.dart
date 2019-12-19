@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
                         cardIcon: Icons.receipt,
                       ),
                       CustomCard(
-                        onPressed: null,
+                        onPressed: () => Navigator.pushNamed(context, '/help/main'),
                         cardText: "Ajuda",
                         cardIcon: Icons.help,
                       ),
