@@ -1,4 +1,4 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 import 'package:bloc_pattern/bloc_pattern_test.dart';
 
 import 'package:nubuy/app/app_bloc.dart';
@@ -13,8 +13,8 @@ void main() {
   });
 
   group('AppBloc Test', () {
-    test("First Test", () {
-      expect(bloc, isInstanceOf<AppBloc>());
+    test("Verify is bloc is a really instance of AppModule", () {
+      expect(bloc, isA<AppBloc>());
     });
   });
 }

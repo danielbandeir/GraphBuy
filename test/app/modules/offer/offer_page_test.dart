@@ -6,7 +6,7 @@ import 'package:nubuy/app/modules/offer/offer_page.dart';
 
 main() {
   testWidgets('OfferPage has title', (WidgetTester tester) async {
-    await tester.pumpWidget(buildTestableWidget(OfferPage(title: 'Offer')));
+    await tester.pumpWidget(buildTestableWidget(OfferPage()));
     final titleFinder = find.text('Offer');
     expect(titleFinder, findsOneWidget);
   });

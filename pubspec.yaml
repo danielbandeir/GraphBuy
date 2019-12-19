@@ -41,8 +41,11 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
 
 dev_dependencies:
+  flutter_test:
+    sdk: flutter
   mockito: ^4.1.1
   hive_generator: ^0.5.2
+  test:
   build_runner: ^1.7.2
 
 
