@@ -12,7 +12,8 @@ void showDescription(BuildContext context, String title, int value,
     double distanceManyButton,
     Color raisedButtonColor,
     double distancecDescMany,
-    int numberItems}) async {
+    int numberItems,
+    bool enableButton}) async {
   showModalBottomSheet(
     context: context, // user must tap button!
     builder: (BuildContext context) {
@@ -32,6 +33,7 @@ void showDescription(BuildContext context, String title, int value,
         distanceDescMany: distancecDescMany,
         raisedButtonColor: raisedButtonColor,
         numberItems: numberItems,
+        enableButton: enableButton,
       );
     },
   );

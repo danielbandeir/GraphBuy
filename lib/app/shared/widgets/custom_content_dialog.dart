@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:nubuy/app/shared/colors.dart';
 import 'package:nubuy/app/shared/widgets/custom_raised_button.dart';
-import 'package:rxdart/subjects.dart';
 
 class CustomContentDialog extends StatefulWidget {
   final String title;
@@ -20,6 +19,7 @@ class CustomContentDialog extends StatefulWidget {
   final Color raisedButtonColor;
   final double distanceDescMany;
   final int numberItems;
+  final bool enableButton;
 
   const CustomContentDialog(
       {@required this.title,
@@ -36,7 +36,8 @@ class CustomContentDialog extends StatefulWidget {
       marginIconText,
       marginsValueText,
       sizeDescription,
-      numberItems})
+      numberItems,
+      enableButton})
       : heightContent = heightContent ?? 250,
         raisedButtonColor = raisedButtonColor ?? CustomColors.mainGreen,
         distanceManyButton = distanceManyButton ?? 10,
@@ -45,7 +46,8 @@ class CustomContentDialog extends StatefulWidget {
         marginIconText = marginIconText ?? 20,
         marginsValueText = marginsValueText ?? const <double>[20, 20],
         sizeDescription = sizeDescription ?? 70,
-        numberItems = numberItems ?? 0;
+        numberItems = numberItems ?? 0,
+        enableButton = enableButton ?? true;
 
   @override
   _CustomContentDialogState createState() => _CustomContentDialogState();
@@ -100,12 +102,12 @@ class _CustomContentDialogState extends State<CustomContentDialog> {
               children: <Widget>[Text(widget.description)],
             ),
           ),
-          CustomRaisedButton(
+          widget.enableButton ? CustomRaisedButton(
             onPressedRaisedButton: widget.onPressedRaisedButton,
             raisedText: widget.raisedButtonText,
             distanceManyButton: widget.distanceManyButton,
             raisedButtonColor: widget.raisedButtonColor,
-          )
+          ) : Spacer(),
         ],
       ),
     );

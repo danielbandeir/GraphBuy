@@ -11,7 +11,7 @@ class HomeBloc extends BlocBase {
 
   HomeBloc({this.homeRepository});
 
-  Future<UserModel> getUser() async => await homeRepository.getUserInfo();
+  Future<UserModel> getUser() async => await homeRepository.inputUserInfo();
 
   @override
   void dispose() {

@@ -1,5 +1,6 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:graphql/client.dart';
+import 'package:hive/hive.dart';
 import 'package:nubuy/app/modules/home/home_repository.dart';
 import 'package:nubuy/app/shared/models/user.model.dart';
 
@@ -9,7 +10,7 @@ class HomeRepositoryImpl extends Disposable implements HomeRepository {
   HomeRepositoryImpl({this.client});
 
   @override
-  Future<UserModel> getUserInfo() async {
+  Future inputUserInfo() async {
     const String query = '''
       query getUser {
         viewer {
@@ -25,7 +26,9 @@ class HomeRepositoryImpl extends Disposable implements HomeRepository {
 
     final QueryResult result = await client.query(options);
     UserModel user = UserModel.fromJson(result.data["viewer"]);
-    return user;
+    var box = Hive.box('user');
+    var get = box.get('data');
+    if(get == null ) { box.put('data', UserModel(name: user.name, balance: user.balance, id: user.id)); }
   }
 
   @override

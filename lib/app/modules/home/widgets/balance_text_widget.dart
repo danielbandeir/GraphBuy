@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:nubuy/app/app_bloc.dart';
 import 'package:nubuy/app/app_module.dart';
 import 'package:nubuy/app/modules/home/home_bloc.dart';
@@ -18,11 +20,15 @@ class _BalacenTextWidgetState extends State<BalacenTextWidget> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: FutureBuilder<UserModel>(
-        future: bloc.getUser(),
-        builder: (BuildContext context, snapshotUser) {
-          if(snapshotUser.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator(valueColor: const AlwaysStoppedAnimation<Color>(CustomColors.mainSky)));
+      child: WatchBoxBuilder(
+        box: Hive.box('user'),
+        builder: (BuildContext context, box) {
+          UserModel data = box.get('data');
+          if(data  == null) {
+            bloc.getUser();
+            return CircularProgressIndicator(
+                valueColor: const AlwaysStoppedAnimation<Color>(
+                    CustomColors.mainSky));
           } else {
             return Padding(
               padding: EdgeInsets.only(left: 70, right: 70),
@@ -33,7 +39,7 @@ class _BalacenTextWidgetState extends State<BalacenTextWidget> {
                     padding: EdgeInsets.only(bottom: 20),
                     child: Align(
                       alignment: AlignmentDirectional.center,
-                      child: Text(snapshotUser.data.name),
+                      child: Text(data.name),
                     ),
                   ),
                   Row(
@@ -64,7 +70,7 @@ class _BalacenTextWidgetState extends State<BalacenTextWidget> {
                           duration: Duration(milliseconds: 100),
                           opacity: !snapshot.data ? 1 : 0,
                           child: Text(
-                            snapshotUser.data.balance.toString(),
+                            data.balance.toString(),
                             style: TextStyle(
                               color: CustomColors.mainGrey,
                               fontWeight: FontWeight.bold,

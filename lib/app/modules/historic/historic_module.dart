@@ -10,7 +10,8 @@ class HistoricModule extends ModuleWidget {
       ];
 
   @override
-  List<Dependency> get dependencies => [];
+  List<Dependency> get dependencies => [
+  ];
 
   @override
   Widget get view => HistoricPage();

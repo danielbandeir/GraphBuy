@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:hive/hive.dart';
 import 'package:nubuy/app/modules/home/widgets/balance_card.dart';
 import 'package:nubuy/app/shared/widgets/custom_card.dart';
 import 'package:nubuy/app/shared/colors.dart';
@@ -14,35 +15,44 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColors.mainBackground,
-      body: Column(
-        children: <Widget>[
-          BalanceCard(),
-          Container(
-            height: 120,
-            margin: EdgeInsets.only(bottom: 20),
-            child: ListView(
-              scrollDirection: Axis.horizontal,
+      body: FutureBuilder(
+        future: Hive.openBox('user'),
+        builder: (BuildContext context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return Column(
               children: <Widget>[
-                CustomCard(
-                  onPressed: () => Navigator.pushNamed(context, '/offers/main'),
-                  cardText: "Ofertas",
-                  cardIcon: Icons.shopping_cart,
-                ),
-                CustomCard(
-                  onPressed: () => Navigator.pushNamed(context, '/historic/main'),
-                  cardText: "Histórico",
-                  cardIcon: Icons.receipt,
-                ),
-                CustomCard(
-                  onPressed: null,
-                  cardText: "Ajuda",
-                  cardIcon: Icons.help,
-                ),
+                BalanceCard(),
+                Container(
+                  height: 120,
+                  margin: EdgeInsets.only(bottom: 20),
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: <Widget>[
+                      CustomCard(
+                        onPressed: () => Navigator.pushNamed(context, '/offers/main'),
+                        cardText: "Ofertas",
+                        cardIcon: Icons.shopping_cart,
+                      ),
+                      CustomCard(
+                        onPressed: () => Navigator.pushNamed(context, '/historic/main'),
+                        cardText: "Histórico",
+                        cardIcon: Icons.receipt,
+                      ),
+                      CustomCard(
+                        onPressed: null,
+                        cardText: "Ajuda",
+                        cardIcon: Icons.help,
+                      ),
+                    ],
+                  ),
+                )
               ],
-            ),
-          )
-        ],
-      ),
+            );
+          } else {
+            return Scaffold();
+          }
+        },
+      )
     );
   }
 }
