@@ -16,7 +16,7 @@ void main() {
 
   group('OfferRepository Test', () {
     test("First Test", () {
-      expect(repository, isInstanceOf<OfferRepository>());
+      expect(repository, isA<OfferRepository>());
     });
 
   });

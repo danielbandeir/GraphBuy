@@ -1,3 +1,4 @@
+import 'package:nubuy/app/shared/models/offers.model.dart';
 import 'package:test/test.dart';
 import 'package:bloc_pattern/bloc_pattern_test.dart';
 
@@ -9,12 +10,16 @@ void main() {
   OfferBloc bloc;
 
   setUp(() {
-    bloc = OfferModule.to.bloc<OfferBloc>();
+    bloc = OfferModule.to.getBloc<OfferBloc>();
   });
 
   group('OfferBloc Test', () {
-    test("First Test", () {
-      expect(bloc, isInstanceOf<OfferBloc>());
+    test("Verify if bloc is correctly", () {
+      expect(bloc, isA<OfferBloc>());
+    });
+
+    test("Check if return offers correctly", () {
+      expectLater(bloc.getOffers(), List<OfferModel>());
     });
   });
 }
