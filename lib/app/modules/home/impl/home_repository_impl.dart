@@ -21,9 +21,19 @@ class HomeRepositoryImpl extends Disposable implements HomeRepository {
     UserModel user = UserModel.fromJson(result.data["viewer"]);
     var box = Hive.box('user');
     var get = box.get('data');
-    if(get == null ) { box.put('data', UserModel(name: user.name, balance: user.balance, id: user.id)); }
+    if(get == null ) { box.put('data', UserModel(name: user.name, balance: user.balance, id: user.id, isVisible: true)); }
+  }
+
+
+  @override
+  Future updatedVisibility(bool isVisible) async {
+    UserModel box = Hive.box('user').get('data');
+    box.isVisible = !isVisible;
+    await box.save();
   }
 
   @override
-  void dispose() {}
+  void dispose() {
+    // TODO: implement dispose
+  }
 }

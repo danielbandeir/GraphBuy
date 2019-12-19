@@ -11,8 +11,10 @@ class UserModel extends HiveObject{
   String name;
   @HiveField(2)
   int balance;
+  @HiveField(3)
+  bool isVisible;
 
-  UserModel({this.id, this.name, this.balance});
+  UserModel({this.id, this.name, this.balance, this.isVisible});
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(

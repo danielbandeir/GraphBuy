@@ -54,8 +54,8 @@ class _BalacenTextWidgetState extends State<BalacenTextWidget> {
                       ),
                       Align(
                         child: IconButton(
-                          onPressed: () =>
-                              bloc.isVisible.add(!bloc.isVisible.value),
+                          onPressed: () async =>
+                              await bloc.updateVisible(data.isVisible),
                           color: CustomColors.mainGrey,
                           icon: const Icon(Icons.visibility_off),
                         ),
@@ -64,23 +64,17 @@ class _BalacenTextWidgetState extends State<BalacenTextWidget> {
                   ),
                   Align(
                     alignment: AlignmentDirectional.centerEnd,
-                    child: StreamBuilder(
-                      stream: bloc.isVisible.stream,
-                      initialData: false,
-                      builder: (BuildContext context, AsyncSnapshot snapshot) {
-                        return AnimatedOpacity(
-                          duration: Duration(milliseconds: 100),
-                          opacity: !snapshot.data ? 1 : 0,
-                          child: Text(
-                            data.balance.toString(),
-                            style: TextStyle(
-                              color: CustomColors.mainGrey,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                            ),
-                          ),
-                        );
-                      },
+                    child: AnimatedOpacity(
+                      duration: Duration(milliseconds: 100),
+                      opacity: data.isVisible ? 1 : 0,
+                      child: Text(
+                        data.balance.toString(),
+                        style: TextStyle(
+                          color: CustomColors.mainGrey,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                        ),
+                      ),
                     ),
                   )
                 ],
