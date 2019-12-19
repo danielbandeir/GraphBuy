@@ -6,5 +6,9 @@
     "buy": "Buy",
     "ok": "Ok",
     "mask": "$",
-    "help-button": "Clean Data"
+    "help-button": "Clean Data",
+    "error": "Error",
+    "conection-error": "A connection problem has occurred",
+    "verify-conection": "Verify your connection"
+
 }

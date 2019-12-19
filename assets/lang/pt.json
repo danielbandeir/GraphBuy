@@ -6,5 +6,8 @@
     "buy": "Comprar",
     "mask": "R$",
     "ok": "Ok",
-    "help-button": "Limpar dados"
+    "help-button": "Limpar dados",
+    "error": "Erro",
+    "conection-error": "Ocorreu um problema de conexão",
+    "verify-conection": "Verifique sua conexão"
 }

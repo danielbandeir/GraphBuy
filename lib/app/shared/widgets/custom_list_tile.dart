@@ -36,31 +36,32 @@ class CustomListTile extends StatelessWidget {
                 offset: Offset(2.0, 2.0))
           ]),
       child: ListTile(
-        onTap: this.onPressed,
-        title: Text(
-          this.title,
-          style: TextStyle(color: CustomColors.mainGrey),
-        ),
-        leading: ClipOval(
-          child: Container(
-            height: 50,
-            width: 50,
-            child: CachedNetworkImage(
-              imageUrl: this.image,
-              fit: BoxFit.cover,
-              errorWidget: (context, url, error) => Icon(Icons.error),
+          onTap: this.onPressed,
+          title: Text(
+            this.title,
+            style: TextStyle(color: CustomColors.mainGrey),
+          ),
+          leading: ClipOval(
+            child: Container(
+              height: 50,
+              width: 50,
+              child: CachedNetworkImage(
+                imageUrl: this.image,
+                fit: BoxFit.cover,
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
             ),
           ),
-        ),
-        subtitle: RichText(
-          text: TextSpan(
-            children: <TextSpan>[
-              TextSpan(text: Strings.of(context).valueOf('mask'), style: TextStyle(color: CustomColors.mainGrey)),
-              TextSpan(text: this.price.toString(),style: TextStyle(color: CustomColors.mainGrey))
-            ]
-          ),
-        )
-        ),
-      );
+          subtitle: RichText(
+            text: TextSpan(children: <TextSpan>[
+              TextSpan(
+                  text: Strings.of(context).valueOf('mask'),
+                  style: TextStyle(color: CustomColors.mainGrey)),
+              TextSpan(
+                  text: this.price.toString(),
+                  style: TextStyle(color: CustomColors.mainGrey))
+            ]),
+          )),
+    );
   }
 }
