@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:internationalization/internationalization.dart';
 import 'package:nubuy/app/shared/colors.dart';
 import 'package:nubuy/app/shared/widgets/custom_raised_button.dart';
 
@@ -24,7 +25,7 @@ class CustomContentDialog extends StatefulWidget {
   const CustomContentDialog(
       {@required this.title,
       @required this.value,
-        @required this.image,
+      @required this.image,
       @required this.description,
       @required this.raisedButtonText,
       @required this.onPressedRaisedButton,
@@ -54,7 +55,6 @@ class CustomContentDialog extends StatefulWidget {
 }
 
 class _CustomContentDialogState extends State<CustomContentDialog> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -90,9 +90,17 @@ class _CustomContentDialogState extends State<CustomContentDialog> {
                 top: widget.marginsValueText[0],
                 bottom: widget.marginsValueText[1]),
             child: Align(
-              alignment: AlignmentDirectional.centerStart,
-              child: Text(widget.value.toString()),
-            ),
+                alignment: AlignmentDirectional.centerStart,
+                child: RichText(
+                  text: TextSpan(children: <TextSpan>[
+                    TextSpan(
+                        text: Strings.of(context).valueOf('mask'),
+                        style: TextStyle(color: CustomColors.mainGrey)),
+                    TextSpan(
+                        text: widget.value.toString(),
+                        style: TextStyle(color: CustomColors.mainGrey))
+                  ]),
+                )),
           ),
           Container(
             width: double.infinity,
@@ -102,12 +110,14 @@ class _CustomContentDialogState extends State<CustomContentDialog> {
               children: <Widget>[Text(widget.description)],
             ),
           ),
-          widget.enableButton ? CustomRaisedButton(
-            onPressedRaisedButton: widget.onPressedRaisedButton,
-            raisedText: widget.raisedButtonText,
-            distanceManyButton: widget.distanceManyButton,
-            raisedButtonColor: widget.raisedButtonColor,
-          ) : Spacer(),
+          widget.enableButton
+              ? CustomRaisedButton(
+                  onPressedRaisedButton: widget.onPressedRaisedButton,
+                  raisedText: widget.raisedButtonText,
+                  distanceManyButton: widget.distanceManyButton,
+                  raisedButtonColor: widget.raisedButtonColor,
+                )
+              : Spacer(),
         ],
       ),
     );

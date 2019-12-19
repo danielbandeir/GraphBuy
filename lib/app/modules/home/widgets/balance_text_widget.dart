@@ -48,10 +48,8 @@ class _BalacenTextWidgetState extends State<BalacenTextWidget> {
                   Row(
                     children: <Widget>[
                       Align(
-                        child: Text(
-                          Strings.of(context).valueOf("balance"),
-                          style: TextStyle(color: CustomColors.mainGrey),
-                        ),
+                        child: Text(Strings.of(context).valueOf('balance'),
+                            style: TextStyle(color: CustomColors.mainGrey)),
                       ),
                       Align(
                         child: IconButton(
@@ -68,13 +66,20 @@ class _BalacenTextWidgetState extends State<BalacenTextWidget> {
                     child: AnimatedOpacity(
                       duration: Duration(milliseconds: 100),
                       opacity: data.isVisible ? 1 : 0,
-                      child: Text(
-                        data.balance.toString(),
-                        style: TextStyle(
-                          color: CustomColors.mainGrey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                        ),
+                      child: RichText(
+                        text: TextSpan(children: [
+                          TextSpan(
+                              text: Strings.of(context).valueOf('mask'),
+                              style: TextStyle(color: CustomColors.mainGrey, fontSize: 24)),
+                          TextSpan(
+                            text: data.balance.toString(),
+                            style: TextStyle(
+                              color: CustomColors.mainGrey,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24,
+                            ),
+                          )
+                        ]),
                       ),
                     ),
                   )

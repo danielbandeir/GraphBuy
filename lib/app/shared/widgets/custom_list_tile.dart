@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:internationalization/internationalization.dart';
 import 'package:nubuy/app/shared/colors.dart';
 
 class CustomListTile extends StatelessWidget {
@@ -51,11 +52,15 @@ class CustomListTile extends StatelessWidget {
             ),
           ),
         ),
-        subtitle: Text(
-          '${this.price.toString()}',
-          style: TextStyle(color: CustomColors.mainGrey),
+        subtitle: RichText(
+          text: TextSpan(
+            children: <TextSpan>[
+              TextSpan(text: Strings.of(context).valueOf('mask'), style: TextStyle(color: CustomColors.mainGrey)),
+              TextSpan(text: this.price.toString(),style: TextStyle(color: CustomColors.mainGrey))
+            ]
+          ),
+        )
         ),
-      ),
-    );
+      );
   }
 }
